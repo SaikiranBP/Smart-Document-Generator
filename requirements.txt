@@ -1,0 +1,3 @@
+pip install python-docx
+pip install streamlit
+pip install google-genai
