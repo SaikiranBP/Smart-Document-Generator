@@ -1,9 +1,7 @@
 # 📄 Smart Document Generator
-
 ---
 
 ## 📌 Overview
-
 - Smart Document Generator is an AI-powered application built using Python and Streamlit.
 - The application allows users to generate professional documents automatically from user inputs.
 - It helps save time by creating structured documents instantly without manual formatting.
@@ -12,7 +10,6 @@
 ---
 
 ## 🚀 Features
-
 - User-friendly Streamlit interface
 - Generates professional documents automatically
 - Reduces manual document writing effort
@@ -23,7 +20,6 @@
 ---
 
 ## 🛠️ Technologies Used
-
 - Python
 - Streamlit
 - Python-docx
@@ -33,7 +29,6 @@
 ---
 
 ## ▶️ Run the Application
-
 ### Install Dependencies
 
 ```bash
@@ -49,20 +44,17 @@ streamlit run app.py
 ---
 
 ## 📂 Project Structure
-
 ```bash
 ├── app.py
 ├── main.py
 ├── .gitignore
 ├── requirements.txt
 ├── README.md
-├── 
 ```
 
 ---
 
 ## ⚙️ How It Works
-
 1. Enter the required document details.
 2. Click on the Generate Document button.
 3. The system processes the information.
