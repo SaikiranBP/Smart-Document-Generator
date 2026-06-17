@@ -134,9 +134,9 @@ def main():
     print("=============================================\n")
 
     # Ask user for general report details
-    report_title = input("Enter Report Title (or press Enter for default): ").strip()
-    if not report_title:
-        report_title = "Smart Word Report"
+    filename_input = input("Enter Filename (or press Enter for default): ").strip()
+    if not filename_input:
+        filename_input = "Smart Word Report"
 
     header_text = input("Enter Header Text: ").strip()
     footer_text = input("Enter Footer Text: ").strip()
@@ -255,20 +255,6 @@ def main():
     # -------------------------------------------------
     # Add content to Document (Section 2)
     # -------------------------------------------------
-    # Centered Report Title at the top of Section 2
-    if report_title:
-        title_para = doc.add_paragraph()
-        title_para.alignment = WD_ALIGN_PARAGRAPH.CENTER
-        title_para.paragraph_format.line_spacing_rule = WD_LINE_SPACING.ONE_POINT_FIVE
-        title_para.paragraph_format.line_spacing = 1.5
-        title_run = title_para.add_run(report_title)
-        title_run.bold = True
-        title_run.font.name = "Times New Roman"
-        title_run.font.size = Pt(18)
-        # Empty space after title
-        spacer = doc.add_paragraph()
-        spacer.paragraph_format.line_spacing_rule = WD_LINE_SPACING.ONE_POINT_FIVE
-        spacer.paragraph_format.line_spacing = 1.5
 
     for idx, page in enumerate(pages):
         # Add heading (Centered, size 18)
@@ -288,7 +274,9 @@ def main():
             doc.add_page_break()
 
     # Save the file (handling file locking and overwriting/overlapping changes gracefully)
-    filename = report_title.replace(" ", "_") + ".docx"
+    filename = filename_input.replace(" ", "_")
+    if not filename.endswith(".docx"):
+        filename += ".docx"
     while True:
         try:
             doc.save(filename)

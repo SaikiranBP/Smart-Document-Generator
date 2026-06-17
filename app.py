@@ -183,7 +183,7 @@ with col_setup:
     st.markdown('<div class="page-title">⚙️ Document Setup</div>', unsafe_allow_html=True)
     
     with st.container(border=True):
-        report_title = st.text_input("Report Title", value="Smart Word Report", placeholder="e.g. Project Briefing")
+        filename_input = st.text_input("Filename", value="Smart Word Report", placeholder="e.g. Project Briefing")
         header_text = st.text_input("Header Text", value="Internal Document", placeholder="e.g. Confidential Info")
         footer_text = st.text_input("Footer Text", value="Smart Generator Corp", placeholder="e.g. Page footer label")
         
@@ -342,21 +342,6 @@ with col_content:
             # Add page number
             add_page_number(footer_para)
 
-            # Center Report Title at the top of Section 2
-            if report_title.strip():
-                title_para = doc.add_paragraph()
-                title_para.alignment = WD_ALIGN_PARAGRAPH.CENTER
-                title_para.paragraph_format.line_spacing_rule = WD_LINE_SPACING.ONE_POINT_FIVE
-                title_para.paragraph_format.line_spacing = 1.5
-                title_run = title_para.add_run(report_title)
-                title_run.bold = True
-                title_run.font.name = "Times New Roman"
-                title_run.font.size = Pt(18)
-                
-                spacer = doc.add_paragraph()
-                spacer.paragraph_format.line_spacing_rule = WD_LINE_SPACING.ONE_POINT_FIVE
-                spacer.paragraph_format.line_spacing = 1.5
-
             # Write dynamically entered page contents
             for idx, page in enumerate(pages_input_data):
                 if page["heading"]:
@@ -376,7 +361,7 @@ with col_content:
 
             # Store in session state
             st.session_state.doc_bytes = doc_buffer.getvalue()
-            st.session_state.generated_filename = report_title.replace(" ", "_") + ".docx"
+            st.session_state.generated_filename = filename_input.replace(" ", "_") + ".docx"
             
             st.success("🎉 Word document compiled successfully!")
 
